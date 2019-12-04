@@ -1,0 +1,32 @@
+{
+  "name": "learning-javascript-data-structures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soloPhone/Learning-JavaScript-Data-Structures.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soloPhone/Learning-JavaScript-Data-Structures/issues"
+  },
+  "homepage": "https://github.com/soloPhone/Learning-JavaScript-Data-Structures#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/parser": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "webpack": "^4.41.2"
+  }
+}

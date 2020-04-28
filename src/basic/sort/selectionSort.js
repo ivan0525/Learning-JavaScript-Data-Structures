@@ -1,3 +1,4 @@
+// 选择排序
 const selectionSort = function (arr) {
   const { length } = arr;
   let indexMin = 0; // 最小值的下标

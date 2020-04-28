@@ -1,6 +1,7 @@
+// 归并排序
 const mergeSort = function (arr) {
-  if (arr.length > 1) {
-    const { length } = arr;
+  const { length } = arr;
+  if (length > 1) {
     const middle = Math.floor(length / 2);
     const left = mergeSort(arr.slice(0, middle));
     const right = mergeSort(arr.slice(middle, length));

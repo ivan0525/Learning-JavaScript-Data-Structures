@@ -7,8 +7,8 @@ describe('number to thousandth', () => {
     expect(thousandth(num)).toEqual(result);
   })
   it('has result', () => {
-    const num = 1234;
-    const result = '1,234';
+    const num = 123412222111;
+    const result = '123,412,222,111';
     expect(thousandth(num)).toEqual(result);
   });
 })

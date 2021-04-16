@@ -37,32 +37,48 @@
       //   return fibonacci(n);
       // };
       // console.log(fibonacciMemoization(100));
-      // function likes(names) {
-      //   const len = names.length
-      //   switch(len) {
-      //     case 0 :
-      //       return 'no one likes this'
-      //     case 1:
-      //       return `${names[0]} likes this`
-      //     case 2:
-      //       return `${names[0]} and ${names[1]} like this`
-      //     case 3:
-      //       return `${names[0]}, ${names[1]} and ${names[2]} like this`
-      //     default:
-      //       return `${names[0]}, ${names[1]} and ${len-2} others like this`
-      //   }
-      // }
 
-      function* another() {
-        yield 'another';
-      }
+      /**
+       * @param {number[]} nums1
+       * @param {number[]} nums2
+       * @return {number}
+       */
+      var findMedianSortedArrays = function (nums1, nums2) {
+        let m = nums1.length;
+        let n = nums2.length;
+        let left = Math.floor((m + n + 1) / 2);
+        let right = Math.floor((m + n + 2) / 2);
+        return (
+          (findKth(nums1, 0, nums2, 0, left) +
+            findKth(nums1, 0, nums2, 0, right)) /
+          2
+        );
+      };
 
-      function* gen() {
-        yield* another();
-        const a = yield 'a';
-        const b = yield a;
-        yield b;
-      }
+      var findKth = function (nums1, i, nums2, j, k) {
+        if (i >= nums1.length) {
+          return nums2[j + k - 1];
+        }
+        if (j >= nums2.length) {
+          return nums1[j + k - 1];
+        }
+        if (k === 1) {
+          return Math.min(nums1[i], nums2[j]);
+        }
+        let midIdx1 = Math.floor(i + k / 2 - 1);
+        let midIdx2 = Math.floor(j + k / 2 - 1);
+        let midVal1 =
+          midIdx1 < nums1.length ? nums1[midIdx1] : Number.MAX_SAFE_INTEGER;
+        let midVal2 =
+          midIdx2 < nums2.length ? nums2[midIdx2] : Number.MAX_SAFE_INTEGER;
+        // 说明要找的数不在第一个数组的前k/2个数中，将nums1的起始位置向后移动k/2个
+        if (midVal1 < midVal2) {
+          return findKth(nums1, midIdx1 + 1, nums2, j, k - Math.floor(k / 2));
+        } else {
+          return findKth(nums1, i, nums2, midIdx2 + 1, k - Math.floor(k / 2));
+        }
+      };
+      findMedianSortedArrays([0, 0], [0, 0]);
     </script>
   </body>
 </html>

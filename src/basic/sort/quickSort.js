@@ -3,9 +3,8 @@ const quickSort = function (arr) {
 };
 
 const quick = function (arr, left, right) {
-  let index;
   if (arr.length > 1) {
-    index = partition(arr, left, right);
+    const index = partition(arr, left, right);
     // 如果子数组中存在较小元素
     if (left < index - 1) {
       quick(arr, left, index - 1);
@@ -21,24 +20,22 @@ const quick = function (arr, left, right) {
 const partition = function (arr, left, right) {
   // 选择中间值作为主元
   const pivot = arr[Math.floor((left + right) / 2)];
-  let i = left;
-  let j = right;
-  while (i <= j) {
+  while (left <= right) {
     // 移动左指针，找比主元大的元素
-    while (arr[i] < pivot) {
-      i++;
+    while (arr[left] < pivot) {
+      left++;
     }
     // 移动右指针，找比主元小的元素
-    while (arr[j] > pivot) {
-      j--;
+    while (arr[right] > pivot) {
+      right--;
     }
-    if (i <= j) {
-      swap(arr, i, j);
-      i++;
-      j--;
+    if (left <= right) {
+      swap(arr, left, right);
+      left++;
+      right--;
     }
   }
-  return i;
+  return left;
 };
 
 const swap = function (arr, i, j) {

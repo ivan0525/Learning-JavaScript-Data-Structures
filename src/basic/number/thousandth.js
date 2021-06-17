@@ -3,5 +3,5 @@ export function thousandth (num) {
   if (!num) {
     return ''
   }
-  return String(num).replace(/(\d{3})+/g, '$&,')
+  return String(num).replace(/(\d+?)(?=(\d{3})+$)/g, '$&,')
 }

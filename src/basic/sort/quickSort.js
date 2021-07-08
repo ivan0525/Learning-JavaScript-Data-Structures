@@ -46,3 +46,4 @@ const swap = function (arr, i, j) {
 
 const arr = [3, 5, 1, 123, 45, 654, 12, 4, 2, 0];
 console.log(quickSort(arr));
+// test-a

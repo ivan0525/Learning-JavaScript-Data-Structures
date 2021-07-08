@@ -15,3 +15,4 @@ const bubbleSort = function (arr) {
 
 const arr = [4, 52, 3, 1, 6, 7, 2, 4];
 console.log(bubbleSort(arr));
+console.log(12)

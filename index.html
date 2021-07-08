@@ -2,31 +2,103 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
-  <script>
+  <!-- <script>
     setTimeout(() => {
       console.log(document.querySelectorAll("h1"));
     }, 0);
-  </script>
+  </script> -->
   <!-- <script>
       document.addEventListener("DOMContentLoaded", () => {
         console.log("DOMContentLoaded");
       });
     </script> -->
   <style>
-    h1 {
+    .green {
+      color: green;
+    }
+
+    .red {
       color: red;
     }
   </style>
-  <link
-    href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css"
-    rel="stylesheet"
-  />
   <body>
-    <h1>hello World</h1>
-    <h1>hello World</h1>
+    <h1 class="green red">hello World</h1>
+    <div>
+      <div  style="float: left; height: 50px;">child</div>
+      <div>我是第二个</div>
+    </div>
+    <div><button
+      onclick="handleClick()"
+      accesskey="s"
+    >click</button></div>
+    <script>
+      function handleClick() { console.log(111) }
+
+
+
+    function TreeNode(val, left, right) {
+        this.val = (val===undefined ? 0 : val)
+        this.left = (left===undefined ? null : left)
+        this.right = (right===undefined ? null : right)
+    }
+
+    var minDiffInBST = function (root) {
+        let res = Number.MAX_SAFE_INTEGER;
+        let pre = -1;
+        while (root !== null) {
+          // while(root !== null) {
+          root = root.left;
+          if (pre === -1) {
+            pre = root.val;
+          } else {
+            res = Math.min(res, root.val - pre);
+            pre = root.val;
+          }
+          // }
+          root = root.right;
+        }
+        return res;
+      };
+
+    </script>
+    <script type="text">
+      let arr = [1,-4,-300,34,-43,100]
+      function solution(arr) {
+        const {length: len} = arr
+        let minus = -1, plus = -1
+        let temp = 0
+        for (let i = 0; i < len; i++) {
+          if (minus === -1) {
+            if (arr[i] < 0 && plus >=0) {
+              minus = i
+            }
+            if (arr[i]>0&&plus<0) {
+              plus = i
+            }
+          }
+          if (minus >= 0 && plus >= 0) {
+            temp = arr[plus]
+            arr[plus++] = arr[minus]
+            for (let k = minus; k>plus;k--) {
+              arr[k] = arr[k-1]
+            }
+            arr[plus] = temp
+            minus = -1
+          }
+        }
+        return arr
+      }
+      console.log(solution(arr))
+    </script>
+    <script>
+
+    </script>
   </body>
 </html>

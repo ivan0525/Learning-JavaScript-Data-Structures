@@ -3,3 +3,4 @@ export function lookBehind (str) {
   return str.match(reg)
 }
 console.log('master 234')
+console.log('master12312')

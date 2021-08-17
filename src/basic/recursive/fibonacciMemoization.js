@@ -4,11 +4,11 @@ const fibonacciMemoization = function (n) {
     if (memo[n] != null) {
       return memo[n];
     }
-    return (memo[n] = fibonacci(n - 2, memo) + fibonacci(n - 1, memo));
+    return (memo[n] = fibonacci(n - 2) + fibonacci(n - 1));
   }
   return fibonacci(n);
 };
-console.log(fibonacciMemoization(3));
+console.log(fibonacciMemoization(5));
 
 const fibonacciMemoization1 = function (n) {
   if (n <= 0) {

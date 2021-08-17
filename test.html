@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let arr = [
+      { id: 1, name: '部门1', parentId: 0 },
+      { id: 2, name: '部门2', parentId: 1 },
+      { id: 5, name: '部门5', parentId: 4 },
+      { id: 4, name: '部门4', parentId: 3 },
+      { id: 3, name: '部门3', parentId: 1 },
+    ];
+    /**
+     * 结果
+        [{
+            "id": 1,
+            "name": "部门1",
+            "parentId": 0,
+            "children": [{
+              "id": 2,
+              "name": "部门2",
+              "parentId": 1,
+              "children": []
+            }, {
+              "id": 3,
+              "name": "部门3",
+              "parentId": 1,
+              "children": [{
+                "id": 4,
+                "name": "部门4",
+                "parentId": 3,
+                "children": [{
+                  "id": 5,
+                  "name": "部门5",
+                  "parentId": 4,
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+    */
+
+    function arrayToTree(arr) {
+      const result = [];
+      const map = {};
+      for (let i = 0; i < arr.length; i++) {
+        const item = arr[i];
+        const { id, parentId } = item
+        if (!map[id]) {
+          map[id] = {
+            children: []
+          }
+        }
+        map[id] = {
+          ...item,
+          children: map[id].children
+        }
+        const leaf = map[id];
+        if (parentId === 0) {
+          result.push(leaf);
+        } else {
+          if (!map[parentId]) {
+            map[parentId] = {
+              children: []
+            }
+          }
+          map[parentId].children.push(leaf);
+        }
+      }
+      return result;
+    }
+    console.log(JSON.stringify(arrayToTree(arr)));
+  </script>
+</body>
+
+</html>
